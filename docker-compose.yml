@@ -11,6 +11,10 @@ services:
       - ${PROM_PORT}:9090
     networks:
       - monitoring
+    environment:
+      - VIRTUAL_HOST=${PROM_DOMAIN}
+      - VIRTUAL_PORT=${PROM_PORT}
+      - LETSENCRYPT_HOST=${PROM_DOMAIN}
   grafana:
     image: grafana/grafana:7.1.5
     container_name: grafana
@@ -21,6 +25,9 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - VIRTUAL_HOST=${GRAFANA_DOMAIN}
+      - VIRTUAL_PORT=${GRAFANA_PORT}
+      - LETSENCRYPT_HOST=${GRAFANA_DOMAIN}
     ports:
       - ${GRAFANA_PORT}:3000
     networks:
