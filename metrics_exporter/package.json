@@ -1,0 +1,23 @@
+{
+  "name": "metrics_exporter",
+  "version": "1.0.0",
+  "description": "Node.js Monitoring with Prometheus and Grafana",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "prometheus",
+    "node.js",
+    "monitoring",
+    "grafana",
+    "metrics"
+  ],
+  "author": "Arpendu Kumar Garai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "prom-client": "^12.0.0"
+  }
+}
