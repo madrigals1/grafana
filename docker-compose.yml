@@ -12,10 +12,6 @@ services:
     networks:
       - monitoring
       - database_network
-    environment:
-      - VIRTUAL_HOST=${PROM_DOMAIN}
-      - VIRTUAL_PORT=${PROM_PORT}
-      - LETSENCRYPT_HOST=${PROM_DOMAIN}
   grafana:
     image: grafana/grafana:7.1.5
     container_name: grafana
@@ -23,7 +19,7 @@ services:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
     environment:
-      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_AUTH_DISABLE_LOGIN_FORM=false
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - VIRTUAL_HOST=${GRAFANA_DOMAIN}
@@ -43,7 +39,8 @@ networks:
       name: ${HTTPS_NETWORK}
   database_network:
     external:
-      name: database_network
+      name: ${DATABASE_NETWORK}
+
 volumes:
   prometheus_data: {}
   grafana_data: {}
