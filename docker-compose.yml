@@ -11,6 +11,7 @@ services:
       - ${PROM_PORT}:9090
     networks:
       - monitoring
+      - database_network
     environment:
       - VIRTUAL_HOST=${PROM_DOMAIN}
       - VIRTUAL_PORT=${PROM_PORT}
@@ -33,13 +34,6 @@ services:
     networks:
       - monitoring
       - https
-  metrics_exporter:
-    build:
-      context: metrics_exporter
-    ports:
-      - ${EXPORTER_PORT}:8080
-    networks:
-      - monitoring
 
 networks:
   monitoring:
@@ -47,6 +41,9 @@ networks:
   https:
     external:
       name: ${HTTPS_NETWORK}
+  database_network:
+    external:
+      name: database_network
 volumes:
   prometheus_data: {}
   grafana_data: {}
