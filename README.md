@@ -8,5 +8,5 @@ global:
 scrape_configs:
   - job_name: "job_name"
     static_configs:
-      - targets: ["localhost:808"]
+      - targets: ["localhost:8080"]
 ```
