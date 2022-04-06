@@ -3,6 +3,7 @@ version: '2.1'
 services:
   prometheus:
     image: prom/prometheus:v2.20.1
+    restart: always
     container_name: prometheus
     volumes:
       - ./prometheus:/etc/prometheus
@@ -12,8 +13,10 @@ services:
     networks:
       - monitoring
       - database_network
+
   grafana:
     image: grafana/grafana:7.1.5
+    restart: always
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
