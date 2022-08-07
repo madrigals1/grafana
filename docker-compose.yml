@@ -1,4 +1,4 @@
-version: '2.1'
+version: "3.8"
 
 services:
   prometheus:
@@ -34,12 +34,12 @@ networks:
   monitoring:
     driver: bridge
   https:
-    external:
-      name: ${HTTPS_NETWORK}
+    name: ${HTTPS_NETWORK}
+    external: true
   database_network:
-    external:
-      name: ${DATABASE_NETWORK}
+    name: ${DATABASE_NETWORK}
+    external: true
 
 volumes:
-  prometheus_data: {}
-  grafana_data: {}
+  prometheus_data:
+  grafana_data:
